@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+
+    /*******/
     public enum State
     {
         Idle,
