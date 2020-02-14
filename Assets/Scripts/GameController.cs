@@ -9,7 +9,13 @@ public class GameController : MonoBehaviour
     Character currentTarget;
     bool waitingPlayerInput;
 
-    // Start is called before the first frame update
+    EndGameController endGameController;
+
+    private void Awake()
+    {
+        endGameController = GameObject.Find("EndGameController").GetComponent<EndGameController>();
+    }
+
     void Start()
     {
         StartCoroutine(GameLoop());
@@ -62,12 +68,14 @@ public class GameController : MonoBehaviour
 
     void PlayerWon()
     {
-        Debug.Log("Player won");
+        //Debug.Log("Player won");
+        endGameController.Open("Player won");
     }
 
     void PlayerLost()
     {
-        Debug.Log("Player lost");
+        //Debug.Log("Player lost");
+        endGameController.Open("Player lost");
     }
 
     Character FirstAliveCharacter(Character[] characters)
@@ -112,7 +120,7 @@ public class GameController : MonoBehaviour
                 while (waitingPlayerInput)
                     yield return null;
 
-                currentTarget.GetComponentInChildren<TargetIndicator>().gameObject.SetActive(false);
+                currentTarget.GetComponentInChildren<TargetIndicator>(true).gameObject.SetActive(false);
 
                 player.target = currentTarget;
                 player.AttackEnemy();

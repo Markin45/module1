@@ -15,9 +15,9 @@ public class LoadingLogicPage : MonoBehaviour
         VisualPart.SetActive(false);
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(int numLevel)
     {
-        StartCoroutine(LoadGameSceneCor(sceneName));
+        StartCoroutine(LoadGameSceneCor("Level_" + numLevel));
     }
 
     private IEnumerator LoadGameSceneCor(string sceneName)
@@ -38,7 +38,10 @@ public class LoadingLogicPage : MonoBehaviour
 
         asyncLoading.allowSceneActivation = true;
 
-        yield return new WaitForSeconds(0.5f);
+
+        while (asyncLoading.progress < 0.99999f)
+            yield return null;
+
         VisualPart.SetActive(false);
     }
 

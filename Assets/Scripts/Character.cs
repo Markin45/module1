@@ -78,6 +78,12 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (PauseController.onPause)
+        {
+            animator.SetFloat("speed", 0.0f);
+            return;
+        }
+
         switch (state) {
             case State.Idle:
                 animator.SetFloat("speed", 0.0f);
@@ -111,6 +117,7 @@ public class Character : MonoBehaviour
 
             case State.BeginShoot:
                 animator.SetFloat("speed", 0.0f);
+                Rotation(target.transform.position);
                 animator.SetTrigger("shoot");
                 state = State.Shoot;
                 break;
@@ -123,6 +130,14 @@ public class Character : MonoBehaviour
                 break;
         }
     }
+
+    void Rotation(Vector3 targetPosition)
+    {
+        Vector3 distance = targetPosition - transform.position;
+        Vector3 direction = distance.normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
+    }
+
 
     bool RunTowards(Vector3 targetPosition, float distanceFromTarget)
     {
