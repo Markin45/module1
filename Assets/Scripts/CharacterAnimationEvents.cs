@@ -12,9 +12,15 @@ public class CharacterAnimationEvents : MonoBehaviour
         character = GetComponentInParent<Character>();
     }
 
-    void Attack()
+    void Attack_Bat()
     {
         character.DoDamageToTarget();
+        SoundControler.Instance.Go(SoundControler.Sound.StandartHit);
+    }
+    void Attack_fist()
+    {
+        character.DoDamageToTarget();
+        SoundControler.Instance.Go(SoundControler.Sound.HandHit);
     }
 
     void AttackEnd()
@@ -31,4 +37,12 @@ public class CharacterAnimationEvents : MonoBehaviour
     {
         character.SetState(Character.State.Idle);
     }
+
+    void Boom()
+    {
+        ParticleSystem hitEffect = GetComponentInChildren<ParticleSystem>();
+        hitEffect.Play();
+        SoundControler.Instance.Go(SoundControler.Sound.ShootHit);
+    }
+
 }

@@ -69,13 +69,13 @@ public class GameController : MonoBehaviour
     void PlayerWon()
     {
         //Debug.Log("Player won");
-        endGameController.Open("Player won");
+        endGameController.Open(1, "Player won");
     }
 
     void PlayerLost()
     {
         //Debug.Log("Player lost");
-        endGameController.Open("Player lost");
+        endGameController.Open(2, "Player lost");
     }
 
     Character FirstAliveCharacter(Character[] characters)

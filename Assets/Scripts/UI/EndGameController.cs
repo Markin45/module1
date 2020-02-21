@@ -19,10 +19,14 @@ public class EndGameController : MonoBehaviour
     }
 
 
-    public void Open(string t)
+    public void Open(int sound, string t)
     {
+
         WindowEndGame.SetActive(true);
         titleWindow.text = t;
+
+        if (sound == 1) SoundControler.Instance.Go(SoundControler.Sound.Win);
+        if (sound == 2) SoundControler.Instance.Go(SoundControler.Sound.Lose);
     }
 
     void GoScene_0()

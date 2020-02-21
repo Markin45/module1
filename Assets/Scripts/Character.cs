@@ -162,6 +162,7 @@ public class Character : MonoBehaviour
     {
         animator.SetTrigger("died");
         SetState(State.Dead);
+        SoundControler.Instance.Go(SoundControler.Sound.die);
     }
 
     public void DoDamageToTarget()

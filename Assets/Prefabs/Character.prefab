@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a94f3f8b90d8e1499eaf072d5f74504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 0.05
+  runSpeed: 0.15
   distanceFromEnemy: 1.22
   target: {fileID: 0}
   weapon: 0
