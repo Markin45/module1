@@ -13,16 +13,24 @@ public class HealthIndicator : MonoBehaviour
     void Start()
     {
         health = GetComponent<Health>();
-        displayedHealth = health.current - 1.0f;
+        displayedHealth = health.Current - 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float value = health.current;
+        float value = health.Current;
+        if (value < 0) value = 0;
         if (Mathf.Abs(displayedHealth - value) >= 0.00001f) {
-            displayedHealth = value;
-            textField.text = $"{value}";
+            if (value == 0)
+            {
+                textField.text = "";
+            }
+            else
+            {
+                displayedHealth = value;
+                textField.text = $"{value}";
+            }
         }
     }
 }

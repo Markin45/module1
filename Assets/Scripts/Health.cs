@@ -4,7 +4,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float current = 3.0f;
+    public Balans balans;
+
+    float current;
+
+    public float Current
+    {
+        get
+        {
+            return current;
+        }
+    }
+
+
+    private void Awake()
+    {
+        current = balans.Health;
+    }
+
+
 
     public void ApplyDamage(float damage)
     {

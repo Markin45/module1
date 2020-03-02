@@ -5,6 +5,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
 
+    public Balans balans;
+
     /*******/
     public enum State
     {
@@ -29,7 +31,6 @@ public class Character : MonoBehaviour
     public float distanceFromEnemy;
     public Character target;
     public Weapon weapon;
-    public float damage;
     Animator animator;
     Vector3 originalPosition;
     Quaternion originalRotation;
@@ -169,8 +170,8 @@ public class Character : MonoBehaviour
     {
         Health health = target.GetComponent<Health>();
         if (health != null) {
-            health.ApplyDamage(damage);
-            if (health.current <= 0.0f)
+            health.ApplyDamage(balans.Power);
+            if (health.Current <= 0.0f)
                 target.Die();
         }
     }

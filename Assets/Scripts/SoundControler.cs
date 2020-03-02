@@ -28,8 +28,10 @@ public class SoundControler : SingletonMonoBehaviour<SoundControler>
         Win,
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         audioSourceS = GetComponentsInChildren<AudioSource>();
         count_AudioSource = audioSourceS.Length;
 
